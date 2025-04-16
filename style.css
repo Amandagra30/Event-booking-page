@@ -13,6 +13,10 @@
     --white: #ffffff;
   }
 
+html {
+    scroll-behavior: smooth;
+}
+
 /* --- BENDRI STILIAI --- */
 body {
     font-family: 'Georgia', serif;
@@ -63,6 +67,10 @@ nav ul li a {
     font-weight: bold;
     font-size: 14px;
 }
+nav ul li a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
 
 /* ---NUOTRAUKŲ SEKCIJOS --- */
 .slideshow {
@@ -77,8 +85,12 @@ nav ul li a {
 .hero {
     color: var(--primary-color);
     text-align: center;
-    padding: 80px 20px 20px;
+    padding: 120px 20px 40px;
     transition: all 0.6s ease;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(5px);
+    border-radius: 20px;
+    margin-top: 50px;
 
 }
 

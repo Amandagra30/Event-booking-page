@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="lt">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>Kontatų forma</title>
+  </head>
+  <body>
+    <h2>Susisiekite su manimi</h2>
+    <form action="prisijungimas.php" method="post">
+      <label for="vardas">vardas:</label>
+      <br />
+      <input type="text" id="vardas" name="vardas" required /><br /><br />
+
+      <label for="el_pastas">El.paštas:</label><br />
+      <input
+        type="email"
+        id="el_pastas"
+        name="el_pastas"
+        required
+      /><br /><br />
+
+      <label for="zinute">Žinutė:</label>
+      <br />
+      <textarea id="zinute" name="zinute" rows="4" required></textarea
+      ><br /><br />
+      <button type="submit">Siusti</button>
+    </form>
+  </body>
+</html>
