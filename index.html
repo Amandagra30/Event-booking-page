@@ -11,6 +11,12 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
+
+    <!-- FullCalendar CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
@@ -44,7 +50,7 @@
       <div class="image-container slideshow"></div>
     </section>
 
-    <!-- Galerija -->
+    <!-- Galerija su video -->
     <section class="gallery">
       <div class="gallery-item">
         <iframe
@@ -55,6 +61,54 @@
       </div>
     </section>
 
-    <script src="./JS/javascript.js"></script>
+    <!-- Kalendorius su rezervacija -->
+    <section class="calendar-section">
+      <h2>Pasirinkite rezervacijos datą</h2>
+      <div id="calendar"></div>
+    </section>
+
+    <div id="reservationModal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
+        <h3>Pasirinkta data: <span id="selectedDate"></span></h3>
+        <form id="reservationForm">
+          <label for="name">Vardas:</label><br />
+          <input type="text" id="name" name="name" required /><br /><br />
+
+          <label for="email">El.paštas:</label><br />
+          <input type="email" id="email" name="email" required /><br /><br />
+
+          <label for="message">Žinutė:</label><br />
+          <textarea id="message" name="message" rows="4" required></textarea
+          ><br /><br />
+
+          <input type="hidden" id="date" name="date" value="" />
+          <button type="submit">Siųsti</button>
+        </form>
+      </div>
+    </div>
+    <!-- Kontaktų forma -->
+    <!-- <section class="contact-form">
+      <h2>Susisiekite su manimi</h2>
+      <form action="prisijungimas.php" method="post">
+        <label for="vardas">Vardas:</label><br />
+        <input type="text" id="vardas" name="vardas" required /><br /><br />
+
+        <label for="el_pastas">El.paštas:</label><br />
+        <input type="email" id="el_pastas" name="el_pastas" required /><br /><br />
+
+        <label for="zinute">Žinutė:</label><br />
+        <textarea id="zinute" name="zinute" rows="4" required></textarea><br /><br />
+
+        Slapta forma pasirinktam datai įrašyti -->
+    <!-- <input type="hidden" id="rezervacijos_data" name="data" value="" />
+        <button type="submit">Siųsti</button>
+      </form>
+    </section> -->
+
+    <script src="JS/javascript.js"></script>
+
+    <!-- FullCalendar JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
   </body>
 </html>
