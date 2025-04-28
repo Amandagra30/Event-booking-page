@@ -1,114 +1,68 @@
 <!DOCTYPE html>
 <html lang="lt">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vida Valutytė Lebedeva</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Passions+Conflict&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vida Valutytė Lebedeva - Pagrindinis</title>
 
-    <!-- FullCalendar CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css"
-      rel="stylesheet"
-    />
-  </head>
+  <link rel="stylesheet" href="style.css">
 
-  <body>
-    <nav>
-      <ul>
-        <li><a href="#">Apie mane</a></li>
-        <li><a href="#">Galerija</a></li>
-        <li><a href="#">Paslaugos</a></li>
-        <li><a href="#">Kontaktai</a></li>
-      </ul>
-    </nav>
+  <!-- FullCalendar CSS (naudojama rezervacijų puslapyje) -->
+  <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css' rel='stylesheet' />
+</head>
 
-    <!-- Antraštė -->
-    <section class="hero" id="headerText">
-      <h1>Vida Valutytė Lebedeva</h1>
-      <p>Renginių organizatorė</p>
-    </section>
+<body>
+  <!-- Navigacija -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Pagrindinis</a></li>
+      <li><a href="rezervacijos.html">Rezervacijos</a></li>
+      <li><a href="kontaktai.html">Kontaktai</a></li>
+    </ul>
+  </nav>
 
-    <!-- Apie mane -->
-    <section class="intro">
-      <div class="about">
-        <h2>Apie mane</h2>
-        <p>
-          Esu profesionali renginių organizatorė, kurianti nepamirštamas
-          akimirkas. Su meile ir atsidavimu padedu klientams įgyvendinti jų
-          svajones, nesvarbu, ar tai būtų vestuvės, jubiliejai ar įmonių
-          renginiai.
-        </p>
-      </div>
+  <!-- Hero sekcija -->
+  <header class="hero">
+    <h1>Vida Valutytė Lebedeva</h1>
+    <p>Renginių organizatorė</p>
+  </header>
 
-      <div class="image-container slideshow"></div>
-    </section>
-
-    <!-- Galerija su video -->
-    <section class="gallery">
-      <div class="gallery-item">
-        <iframe
-          src="https://www.youtube.com/embed/fMxbj4spqsA"
-          frameborder="0"
-          allowfullscreen
-        ></iframe>
-      </div>
-    </section>
-
-    <!-- Kalendorius su rezervacija -->
-    <section class="calendar-section">
-      <h2>Pasirinkite rezervacijos datą</h2>
-      <div id="calendar"></div>
-    </section>
-
-    <div id="reservationModal" class="modal">
-      <div class="modal-content">
-        <span class="close" id="closeModal">&times;</span>
-        <h3>Pasirinkta data: <span id="selectedDate"></span></h3>
-        <form id="reservationForm">
-          <label for="name">Vardas:</label><br />
-          <input type="text" id="name" name="name" required /><br /><br />
-
-          <label for="email">El.paštas:</label><br />
-          <input type="email" id="email" name="email" required /><br /><br />
-
-          <label for="message">Žinutė:</label><br />
-          <textarea id="message" name="message" rows="4" required></textarea
-          ><br /><br />
-
-          <input type="hidden" id="date" name="date" value="" />
-          <button type="submit">Siųsti</button>
-        </form>
-      </div>
+  <!-- Apie mane -->
+  <section class="intro">
+    <div class="about">
+      <h2>Apie mane</h2>
+      <p>
+        Esu profesionali renginių organizatorė, kurianti nepamirštamas akimirkas.
+        Su meile ir atsidavimu padedu klientams įgyvendinti jų svajones:
+        vestuvės, jubiliejai, įmonių šventės – viskas organizuojama atsakingai ir kūrybiškai.
+      </p>
     </div>
-    <!-- Kontaktų forma -->
-    <!-- <section class="contact-form">
-      <h2>Susisiekite su manimi</h2>
-      <form action="prisijungimas.php" method="post">
-        <label for="vardas">Vardas:</label><br />
-        <input type="text" id="vardas" name="vardas" required /><br /><br />
+    <div class="image-container">
+      <!-- Čia gali įdėti savo nuotrauką -->
+      <img src="nuotraukos/Vida1.jpg" alt="Vida" class="hero-image">
+    </div>
+  </section>
+  <!-- Galerija su video -->
+  <section class="gallery">
+    <div class="gallery-item">
+      <iframe
+        src="https://www.youtube.com/embed/fMxbj4spqsA"
+        frameborder="0"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </section>
 
-        <label for="el_pastas">El.paštas:</label><br />
-        <input type="email" id="el_pastas" name="el_pastas" required /><br /><br />
+  <!-- Papildoma sekcija (paslaugos) -->
+  <section class="services">
+    <h2>Paslaugos</h2>
+    <ul>
+      <li>Vestuvės</li>
+      <li>Gimtadieniai</li>
+      <li>Įmonių renginiai</li>
+      <li>Asmeninės šventės</li>
+    </ul>
+  </section>
 
-        <label for="zinute">Žinutė:</label><br />
-        <textarea id="zinute" name="zinute" rows="4" required></textarea><br /><br />
-
-        Slapta forma pasirinktam datai įrašyti -->
-    <!-- <input type="hidden" id="rezervacijos_data" name="data" value="" />
-        <button type="submit">Siųsti</button>
-      </form>
-    </section> -->
-
-    <script src="JS/javascript.js"></script>
-
-    <!-- FullCalendar JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
-  </body>
+</body>
 </html>

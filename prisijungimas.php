@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     ";
 
     // Siųsti laišką
-    $to = "admin@tavo-svetaine.lt"; // Tavo el. pašto adresas
+    $to = "amandagrakalskiene@gmail.com"; // Tavo el. pašto adresas
     $headers = "From: $email";
 
     // Patikrinti ar laiškas buvo išsiųstas

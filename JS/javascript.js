@@ -1,85 +1,89 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener('DOMContentLoaded', function () {
   const body = document.querySelector("body");
-  const modal = document.getElementById("modal");
+  const hero = document.getElementById("headerText");
+  const modal = document.getElementById("reservationModal");
   const closeModal = document.getElementById("closeModal");
   const selectedDateText = document.getElementById("selectedDate");
-  const reserveButton = document.getElementById("reserveButton");
   const form = document.getElementById("contactForm");
-});
 
-// Užtikriname, kad lango dydis keičiasi
-window.addEventListener("resize", function () {
-  if (window.innerWidth < 768) {
-    body.style.width = "95%";
-  } else {
-    body.style.width = "80%";
-  }
-});
+  var uzimtosDatos = []; // Užimtos datos masyvas
 
-// Scroll efekto funkcija
-window.addEventListener("scroll", function () {
-  const hero = document.getElementById("headerText");
-  if (window.scrollY > 150) {
-    hero.classList.add("animate-up");
-  } else {
-    hero.classList.remove("animate-up");
-  }
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-  var calendarEl = document.getElementById("calendar");
-
-  var calendar = new FullCalendar.Calendar(calendarEl, {
-    initialView: "dayGridMonth",
-    headerToolbar: {
-      left: "prev,next today",
-      center: "title",
-      right: "dayGridMonth,timeGridWeek,timeGridDay",
-    },
-    events: [
-      {
-        title: "Paslaugos rezervacija",
-        start: "2025-05-05",
-        description: "Pasirinkta data rezervacijai",
-      },
-      // Čia galime įtraukti dinamiškai iš duomenų bazės įkeltus renginius.
-    ],
-    dateClick: function (info) {
-      let dateStr = info.dateStr;
-      alert("Pasirinkta data: " + dateStr);
-
-      // Užrašom pasirinktas datos reikšmes į formą
-      document.getElementById("rezervacijos_data").value = dateStr;
-    },
+  // Responsive dizaino pritaikymas
+  window.addEventListener("resize", function () {
+    if (window.innerWidth < 768) {
+      body.style.width = "95%";
+    } else {
+      body.style.width = "80%";
+    }
   });
 
-  calendar.render();
-});
-// Inicializacija FullCalendar
-document.addEventListener("DOMContentLoaded", function () {
+  // Hero sekcijos animacija
+  window.addEventListener("scroll", function () {
+    if (window.scrollY > 150) {
+      hero.classList.add("animate-up");
+    } else {
+      hero.classList.remove("animate-up");
+    }
+  });
+
+  // FullCalendar inicializacija
   var calendarEl = document.getElementById("calendar");
   var calendar = new FullCalendar.Calendar(calendarEl, {
     initialView: "dayGridMonth",
-    selectable: true, // leidžia pasirinkti datas
-    dateClick: function (info) {
-      // Parodome iššokantį langą su pasirinkta data
-      var selectedDate = info.dateStr; // Gauname pasirinktos datos reikšmę
-      document.getElementById("selectedDate").textContent = selectedDate; // Rodome datą
-      document.getElementById("date").value = selectedDate; // Įrašome datą į slaptažodį
-      document.getElementById("reservationModal").style.display = "block"; // Parodome modalą
+    locale: 'lt',
+    selectable: true,
+
+    events: {
+      url: 'nuskaitom_rezervacijas.php',
+      success: function(events) {
+        uzimtosDatos = events.map(event => event.start);
+      }
     },
+
+    selectAllow: function(selectInfo) {
+      // Leisti pasirinkti tik laisvas datas
+      return !uzimtosDatos.includes(selectInfo.startStr);
+    },
+
+    dateClick: function (info) {
+      var selectedDate = info.dateStr;
+      selectedDateText.textContent = selectedDate;
+      document.getElementById("date").value = selectedDate;
+      modal.style.display = "block";
+    }
   });
   calendar.render();
-});
 
-// Uždaryti iššokantį langą, kai paspaudžiama ant X
-document.getElementById("closeModal").addEventListener("click", function () {
-  document.getElementById("reservationModal").style.display = "none";
-});
+  // Modal lango uždarymas
+  closeModal.addEventListener("click", function () {
+    modal.style.display = "none";
+  });
 
-// Uždaryti iššokantį langą, kai paspaudžiama už jo ribų
-window.addEventListener("click", function (event) {
-  if (event.target == document.getElementById("reservationModal")) {
-    document.getElementById("reservationModal").style.display = "none";
-  }
+  window.addEventListener("click", function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  });
+
+  // Formos pateikimas (registracija)
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const vardas = document.getElementById("name").value;
+    const el_pastas = document.getElementById("email").value;
+    const data = document.getElementById("date").value;
+
+    fetch('rezervuoti_diena.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ vardas: vardas, el_pastas: el_pastas, data: data })
+    })
+    .then(response => response.text())
+    .then(msg => {
+      alert(msg);
+      modal.style.display = "none";
+      form.reset();
+      calendar.refetchEvents(); // atnaujinam kalendorių
+    });
+  });
 });
