@@ -1,5 +1,5 @@
 <?php
-$conn = new mysqli("localhost", "root", "", "mano_projektas");
+$conn = new mysqli("127.0.0.1", "root", "", "mano_projektas");
 if ($conn->connect_error) {
     die("Prisijungimo klaida: " . $conn->connect_error);
 }

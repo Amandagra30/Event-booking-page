@@ -4,11 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vida Valutytė Lebedeva - Pagrindinis</title>
-
+  
   <link rel="stylesheet" href="style.css">
-
-  <!-- FullCalendar CSS (naudojama rezervacijų puslapyje) -->
-  <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css' rel='stylesheet' />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 
 <body>
@@ -22,13 +20,13 @@
   </nav>
 
   <!-- Hero sekcija -->
-  <header class="hero">
+  <header class="hero animate__animated animate__fadeInDown">
     <h1>Vida Valutytė Lebedeva</h1>
     <p>Renginių organizatorė</p>
   </header>
 
-  <!-- Apie mane -->
-  <section class="intro">
+  <!-- Apie mane sekcija -->
+  <section class="intro animate__animated animate__fadeInLeft">
     <div class="about">
       <h2>Apie mane</h2>
       <p>
@@ -38,23 +36,12 @@
       </p>
     </div>
     <div class="image-container">
-      <!-- Čia gali įdėti savo nuotrauką -->
       <img src="nuotraukos/Vida1.jpg" alt="Vida" class="hero-image">
     </div>
   </section>
-  <!-- Galerija su video -->
-  <section class="gallery">
-    <div class="gallery-item">
-      <iframe
-        src="https://www.youtube.com/embed/fMxbj4spqsA"
-        frameborder="0"
-        allowfullscreen
-      ></iframe>
-    </div>
-  </section>
 
-  <!-- Papildoma sekcija (paslaugos) -->
-  <section class="services">
+  <!-- Paslaugų sekcija -->
+  <section class="services animate__animated animate__fadeInUp">
     <h2>Paslaugos</h2>
     <ul>
       <li>Vestuvės</li>
@@ -62,6 +49,18 @@
       <li>Įmonių renginiai</li>
       <li>Asmeninės šventės</li>
     </ul>
+  </section>
+
+  <!-- Video sekcija -->
+  <section class="video-section animate__animated animate__fadeInUp">
+    <h2>Žvilgsnis į mano renginius</h2>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/fMxbj4spqsA" 
+              title="Renginiai" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen></iframe>
+    </div>
   </section>
 
 </body>

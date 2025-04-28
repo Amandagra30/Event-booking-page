@@ -1,5 +1,5 @@
 <?php
-$servername = "localhost";
+$servername = "127.0.0.1";
 $username = "root";
 $password = "";
 $dbname = "mano_projektas"; // Pakeisk į savo tikrą DB pavadinimą
@@ -15,13 +15,13 @@ if ($conn->connect_error) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $vardas = $_POST['vardas'] ?? '';
     $el_pastas = $_POST['el_pastas'] ?? '';
-    $zinute = $_POST['zinute'] ?? '';
 
-    if ($vardas && $el_pastas && $zinute) {
-        $sql = "INSERT INTO klientai(vardas, el_pastas, zinute) VALUES (?, ?, ?)";
+
+    if ($vardas && $el_pastas) {
+        $sql = "INSERT INTO klientas(vardas, el_pastas) VALUES (?, ?, ?)";
         $stmt = $conn->prepare($sql);
         if ($stmt) {
-            $stmt->bind_param("sss", $vardas, $el_pastas, $zinute);
+            $stmt->bind_param("sss", $vardas, $el_pastas);
             $stmt->execute();
             echo "Duomenys sėkmingai išsaugoti!";
             $stmt->close();
@@ -42,7 +42,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Gauti formos duomenis
     $name = $_POST['name'];
     $email = $_POST['email'];
-    $message = $_POST['message'];
     $date = $_POST['date'];
 
     // Laiško turinys
