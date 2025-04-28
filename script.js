@@ -35,10 +35,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 title: 'Sėkmingai!',
                 text: `Rezervavote datą: ${dataGrazi}`,
                 icon: 'success',
-                confirmButtonText: 'OK'
-              }).then(() => {
-                window.location.href = "aciu.html";
-            });
+                confirmButtonText: 'Ačiū!'
+              });
             calendar.refetchEvents();
           })
           .catch(function (error) {
@@ -55,3 +53,10 @@ document.addEventListener('DOMContentLoaded', function () {
   
     calendar.render();
   });
+  const mysql = require("mysql");
+const connection = mysql.createConnection({
+    host: '127.0.0.1',
+    user:'root',
+    password: '',
+    database: 'mano_projektas'
+});
